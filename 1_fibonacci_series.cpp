@@ -1,22 +1,17 @@
 #include<iostream>
 using namespace std;
-int fibonnaci(int n1,int n2,int n){
-  if(n<=0){
-    return 0;
-  }
-  else{
-    cout<<n1<<" ";
-   int  n3=n1+n2;
-    n1=n2;
-    n2=n3;
-    fibonnaci(n1,n2,n-1);
-  }
+void fibonacci_series(int n,int a=0,int b=1){
+    if(n==0) return;
+    cout<<a<<" ";
+    fibonacci_series(n-1,b,a+b);
 }
 int main(){
-  int n1=0,n2=1,n3,n;
-  cout<<"Enter the number of terms: ";
-  cin>>n;
-  cout<<"Fibonacci Series: ";
-  fibonnaci(n1, n2, n);
-
+    int n;
+    cout<<"Enter the number of terms in Fibonacci series: ";
+    cin>>n;
+    cout<<"Fibonacci Series: ";
+    fibonacci_series(n);
+    cout<<endl;
+    return 0;
 }
+  
