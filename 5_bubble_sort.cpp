@@ -1,37 +1,38 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-void bubble_sort(int arr[], int n){
-  for(int i=0; i<n-1; i++){
-    for(int j=0; j<n-i-1; j++){
-      if(arr[j]>arr[j+1]){
-        //swap arr[j] and arr[j+1]
-        int temp=arr[j];
-        arr[j]=arr[j+1];
-        arr[j+1]=temp;
-      }
+void bubbleSort(int arr[], int size){
+    for(int i = 0; i < size - 1; i++){
+        bool swapped = false;
+        for(int j = 0; j < size - i - 1; j++){
+            if(arr[j] > arr[j + 1]){
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        cout << "Pass " << i + 1 << ": ";
+        for(int k = 0; k < size; k++){
+            cout << arr[k] << " ";
+        }
+        cout << endl;
+        if(!swapped){
+            break;
+        }
     }
-  }
- 
-}
-void display(int arr[], int n){
-  cout<<"Sorted array: ";
-  for(int i=0; i<n; i++){
-    cout<<arr[i]<<" ";
-  }
-  cout<<endl;
 }
 int main(){
-  int arr[100];
-  int n;
-  cout<<"Enter the number of elements: ";
-  cin>>n;
-  cout<<"Enter "<<n<<" elements:"<<endl;
-  for(int i=0; i<n; i++){
-    cin>>arr[i];
-  } 
-  // Bubble Sort Algorithm
-  bubble_sort(arr, n);
-  display(arr, n);  
-  return 0;
-
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter " << n << " elements: ";
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    bubbleSort(arr, n);
+    cout << "Sorted array: ";
+    for(int i = 0; i < n; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
 }
