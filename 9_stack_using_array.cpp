@@ -1,53 +1,53 @@
 #include<iostream>
-using namespace std;
-class stack{
+ #include<vector>
+ using namespace std;
+ class Stack{
+    int* arr;    int size;    int top;
     public:
-    int top;
-    int size;
-    int *arr;
-    stack(int s){
+    Stack(int s){
         size=s;
-        arr=new int[size];
         top=-1;
-    }
-    void push(int x){
+        arr=new int[s];    }
+    void push(int value){
         if(top==size-1){
-            cout<<"Stack Overflow"<<endl;
-            return;
-        }
-        top++;
-        arr[top]=x;
+            cout<<"Stack full"<<endl;
+            return;        }
+        else{
+            top++;
+            arr[top]=value;
+            cout<<"Pushed "<<value<<" into the stack"<<endl;        }
     }
-    void pop(){
+    int pop(){
         if(top==-1){
-            cout<<"Stack Underflow"<<endl;
-            return;
-        }
-        top--;
+            cout<<"Stack is empty"<<endl;
+            return -1;        }
+        else{
+            cout<<"Popped "<<arr[top]<<" from the stack"<<endl;
+            return arr[top--];        }
     }
     int peek(){
         if(top==-1){
+
             cout<<"Stack is empty"<<endl;
             return -1;
         }
-        return arr[top];
-    }
-    bool isEmpty(){
-        return top==-1;
-    }
-};
-
-
-
-int main(){
-  stack st(5);
-  st.push(10);
-  st.push(20);
-  cout<<st.peek()<<endl; // Output: 20
-  st.pop(); 
-  cout<<st.peek()<<endl; // Output: 10
-  st.pop();
-  cout<<st.isEmpty()<<endl; // Output: 1 (true)
-  st.pop(); // Output: Stack Underflow
-  return 0;
-}
+        else{
+            return arr[top];
+        }
+    }    
+    void display(){
+        for(int i=0 ; i<=top; i++){
+            cout << arr[i] << " ";
+        }
+        cout << endl;    }};
+ int main(){
+    Stack st(5);
+    st.push(10);
+    st.push(20);
+    st.pop();
+    cout<<"Top element: "<<st.peek()<<endl;
+    st.push(30);
+    st.push(40);
+    cout<<"Stack Elements : ";
+    st.display();    return 0;
+ }
